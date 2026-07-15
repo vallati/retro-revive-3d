@@ -5,77 +5,265 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Retro Revive 3D</title>
 <meta name="description" content="Custom displays, mounts, collectibles and more from Retro Revive 3D.">
-<meta name="theme-color" content="#07071b">
+<meta name="theme-color" content="#05051a">
 <style>
-:root{--cyan:#20e7ff;--white:#f7fbff;--muted:#c7d4f4}
+:root{
+  --cyan:#20e7ff;
+  --blue:#1b7cff;
+  --pink:#ff35c8;
+  --orange:#ff6a1d;
+  --white:#f8fbff;
+  --muted:#c6d3ef;
+}
 *{box-sizing:border-box}
-html,body{margin:0;min-height:100%;background:#07071b}
+html{min-height:100%;background:#05051a}
 body{
-color:var(--white);
-font-family:"Arial Narrow","Helvetica Neue",Arial,sans-serif;
-background:
-radial-gradient(circle at 50% 0%,rgba(74,53,180,.45),transparent 42%),
-linear-gradient(rgba(4,4,21,.25),rgba(4,4,21,.94)),
-repeating-linear-gradient(0deg,transparent 0 39px,rgba(32,231,255,.13) 40px),
-repeating-linear-gradient(90deg,transparent 0 39px,rgba(32,231,255,.13) 40px),
-#07071b;
+  margin:0;
+  min-height:100vh;
+  color:var(--white);
+  font-family:"Arial Narrow","Helvetica Neue",Arial,sans-serif;
+  background:
+    radial-gradient(circle at 50% 2%,rgba(65,46,177,.58),transparent 38%),
+    linear-gradient(rgba(4,4,21,.20),rgba(4,4,21,.95)),
+    repeating-linear-gradient(0deg,transparent 0 39px,rgba(32,231,255,.12) 40px),
+    repeating-linear-gradient(90deg,transparent 0 39px,rgba(32,231,255,.12) 40px),
+    #05051a;
+  overflow-x:hidden;
 }
-.page{width:min(100%,520px);margin:auto;padding:24px 18px 34px}
-.logo{display:block;width:min(100%,420px);height:auto;margin:auto;filter:drop-shadow(0 0 14px rgba(32,231,255,.36)) drop-shadow(0 0 24px rgba(255,44,191,.22))}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 12% 18%,rgba(255,255,255,.85) 0 1px,transparent 1.7px),
+    radial-gradient(circle at 76% 12%,rgba(255,255,255,.75) 0 1px,transparent 1.7px),
+    radial-gradient(circle at 34% 68%,rgba(255,255,255,.65) 0 1px,transparent 1.7px),
+    radial-gradient(circle at 88% 77%,rgba(255,255,255,.70) 0 1px,transparent 1.7px);
+  background-size:180px 180px,240px 240px,300px 300px,360px 360px;
+  animation:twinkle 7s ease-in-out infinite alternate;
+  opacity:.68;
+}
+@keyframes twinkle{
+  from{opacity:.45;transform:translateY(0)}
+  to{opacity:.85;transform:translateY(-3px)}
+}
+.page{
+  position:relative;
+  width:min(100%,540px);
+  margin:0 auto;
+  padding:18px 18px 34px;
+}
+.logo{
+  display:block;
+  width:min(100%,380px);
+  height:auto;
+  margin:0 auto 4px;
+  filter:
+    drop-shadow(0 0 12px rgba(32,231,255,.45))
+    drop-shadow(0 0 24px rgba(255,53,200,.30));
+  animation:logoGlow 3.5s ease-in-out infinite alternate;
+}
+@keyframes logoGlow{
+  from{filter:drop-shadow(0 0 10px rgba(32,231,255,.35)) drop-shadow(0 0 18px rgba(255,53,200,.20))}
+  to{filter:drop-shadow(0 0 18px rgba(32,231,255,.62)) drop-shadow(0 0 30px rgba(255,53,200,.38))}
+}
 .tagline{
-margin:8px auto 24px;text-align:center;
-font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;
-font-size:clamp(19px,5.2vw,27px);line-height:1.2;letter-spacing:.7px;
-text-transform:uppercase;text-shadow:0 0 7px rgba(32,231,255,.9),0 0 16px rgba(36,104,255,.7)
+  margin:0 auto 22px;
+  text-align:center;
+  font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;
+  font-size:clamp(19px,5.1vw,27px);
+  line-height:1.18;
+  letter-spacing:.8px;
+  text-transform:uppercase;
+  text-shadow:0 0 7px rgba(32,231,255,.9),0 0 16px rgba(36,104,255,.65);
 }
-.links{display:grid;gap:16px}
+.links{display:grid;gap:15px}
 .card{
-display:block;padding:17px 18px 16px;border:1px solid rgba(255,255,255,.28);
-border-radius:16px;color:#fff;text-align:center;text-decoration:none;
-box-shadow:0 10px 24px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.18);
-transition:.16s ease
+  position:relative;
+  display:grid;
+  grid-template-columns:60px 1fr 28px;
+  align-items:center;
+  min-height:92px;
+  padding:13px 14px;
+  border-radius:18px;
+  color:#fff;
+  text-decoration:none;
+  overflow:hidden;
+  background:rgba(8,10,38,.82);
+  border:2px solid currentColor;
+  box-shadow:
+    0 12px 26px rgba(0,0,0,.32),
+    inset 0 0 20px rgba(255,255,255,.04);
+  transition:transform .18s ease,filter .18s ease,box-shadow .18s ease;
 }
-.card:hover,.card:focus{transform:translateY(-2px) scale(1.01);filter:brightness(1.08);outline:none}
-.facebook{background:linear-gradient(135deg,#1b7cff,#263ccf 58%,#672ed7)}
-.ebay{background:linear-gradient(135deg,#693cff,#2a54ef 56%,#00a5ef)}
-.etsy{background:linear-gradient(135deg,#ff5a25,#d74228 58%,#a92653)}
+.card::before{
+  content:"";
+  position:absolute;
+  inset:-30% -60%;
+  background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.24) 50%,transparent 62%);
+  transform:translateX(-45%);
+  animation:shine 4.8s ease-in-out infinite;
+}
+@keyframes shine{
+  0%,55%{transform:translateX(-45%)}
+  82%,100%{transform:translateX(45%)}
+}
+.card:hover,.card:focus-visible{
+  transform:translateY(-3px) scale(1.01);
+  filter:brightness(1.09);
+  outline:none;
+}
+.facebook{
+  color:var(--cyan);
+  box-shadow:0 0 24px rgba(32,231,255,.34),0 12px 26px rgba(0,0,0,.32);
+}
+.ebay{
+  color:var(--pink);
+  box-shadow:0 0 24px rgba(255,53,200,.30),0 12px 26px rgba(0,0,0,.32);
+}
+.etsy{
+  color:var(--orange);
+  box-shadow:0 0 24px rgba(255,106,29,.30),0 12px 26px rgba(0,0,0,.32);
+}
+.brand{
+  position:relative;
+  z-index:1;
+  font-weight:900;
+  font-size:34px;
+  text-align:center;
+  line-height:1;
+  text-shadow:0 0 12px currentColor;
+}
+.brand.ebay-word{
+  font-size:25px;
+  letter-spacing:-2px;
+}
+.brand.etsy-word{
+  font-family:Georgia,serif;
+  font-size:30px;
+  letter-spacing:-1px;
+}
+.copy{position:relative;z-index:1;text-align:left}
 .title{
-display:block;font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;
-font-size:23px;line-height:1.05;letter-spacing:.9px;text-transform:uppercase;
-text-shadow:0 2px 3px rgba(0,0,0,.3)
+  display:block;
+  font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;
+  font-size:22px;
+  line-height:1.04;
+  letter-spacing:.8px;
+  text-transform:uppercase;
+  color:#fff;
+  text-shadow:0 2px 3px rgba(0,0,0,.3),0 0 9px currentColor;
 }
-.subtitle{display:block;margin-top:6px;font-size:14px;line-height:1.3;font-weight:700}
-.coupon{margin:15px 2px 0;text-align:center;color:var(--muted);font-size:14px;line-height:1.45}
-.coupon strong{color:#fff}
-footer{margin-top:26px;text-align:center;font-size:12px;color:#8fa2d6}
+.subtitle{
+  display:block;
+  margin-top:6px;
+  font-size:13.5px;
+  line-height:1.35;
+  font-weight:700;
+  color:#edf4ff;
+}
+.arrow{
+  position:relative;
+  z-index:1;
+  justify-self:end;
+  font-size:42px;
+  line-height:1;
+  color:currentColor;
+  text-shadow:0 0 12px currentColor;
+}
+.callout{
+  margin:18px 2px 0;
+  padding:15px 16px;
+  text-align:center;
+  border:1px solid rgba(255,53,200,.65);
+  border-radius:14px;
+  background:rgba(22,8,44,.64);
+  box-shadow:0 0 18px rgba(255,53,200,.20);
+  color:#e8eefe;
+  font-size:14px;
+  line-height:1.45;
+}
+.callout strong{
+  display:block;
+  margin-bottom:3px;
+  color:#fff;
+  font-size:15px;
+}
+footer{
+  margin-top:24px;
+  padding-top:18px;
+  border-top:1px solid rgba(32,231,255,.28);
+  text-align:center;
+  color:#aebddd;
+  font-size:13px;
+  line-height:1.55;
+}
+footer strong{
+  display:block;
+  color:#fff;
+  font-size:14px;
+}
+@media(max-width:420px){
+  .page{padding:14px 12px 28px}
+  .logo{width:min(100%,330px)}
+  .card{grid-template-columns:52px 1fr 22px;min-height:86px;padding:12px 11px}
+  .brand{font-size:30px}
+  .brand.ebay-word{font-size:22px}
+  .brand.etsy-word{font-size:26px}
+  .title{font-size:19px}
+  .subtitle{font-size:12.5px}
+  .arrow{font-size:35px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
 </style>
 </head>
 <body>
 <main class="page">
-<img class="logo" src="retro-revive-3d-logo.png" alt="Retro Revive 3D logo">
-<p class="tagline">Custom Displays • Mounts • Collectibles &amp; More</p>
+  <img class="logo" src="retro-revive-3d-logo-transparent.png" alt="Retro Revive 3D logo">
+  <p class="tagline">Custom Displays • Mounts • Collectibles &amp; More</p>
 
-<section class="links">
-<a class="card facebook" href="https://www.facebook.com/RetroRevive3D" target="_blank" rel="noopener noreferrer">
-<span class="title">Follow on Facebook</span>
-<span class="subtitle">Exclusive coupons, new releases and updates</span>
-</a>
+  <section class="links" aria-label="Retro Revive 3D links">
+    <a class="card facebook" href="https://www.facebook.com/RetroRevive3D" target="_blank" rel="noopener noreferrer">
+      <span class="brand">f</span>
+      <span class="copy">
+        <span class="title">Follow on Facebook</span>
+        <span class="subtitle">Exclusive coupons, giveaways and early access to new products</span>
+      </span>
+      <span class="arrow">›</span>
+    </a>
 
-<a class="card ebay" href="https://www.ebay.com/str/retrorevive3dp" target="_blank" rel="noopener noreferrer">
-<span class="title">Shop Our eBay Store</span>
-<span class="subtitle">Browse our latest listings</span>
-</a>
+    <a class="card ebay" href="https://www.ebay.com/str/retrorevive3dp" target="_blank" rel="noopener noreferrer">
+      <span class="brand ebay-word">ebay</span>
+      <span class="copy">
+        <span class="title">Shop Our eBay Store</span>
+        <span class="subtitle">Browse our latest listings</span>
+      </span>
+      <span class="arrow">›</span>
+    </a>
 
-<a class="card etsy" href="https://retrorevive3dprints.etsy.com" target="_blank" rel="noopener noreferrer">
-<span class="title">Shop Our Etsy Store</span>
-<span class="subtitle">Custom and 3D-printed products</span>
-</a>
-</section>
+    <a class="card etsy" href="https://retrorevive3dprints.etsy.com" target="_blank" rel="noopener noreferrer">
+      <span class="brand etsy-word">Etsy</span>
+      <span class="copy">
+        <span class="title">Shop Our Etsy Store</span>
+        <span class="subtitle">Custom and 3D-printed products</span>
+      </span>
+      <span class="arrow">›</span>
+    </a>
+  </section>
 
-<p class="coupon"><strong>Follow us on Facebook for exclusive coupons</strong><br>
-Plus product launches, giveaways and behind-the-scenes updates.</p>
+  <section class="callout">
+    <strong>🎁 Follow us on Facebook for exclusive coupon codes</strong>
+    Giveaways, early access to new products and the latest Retro Revive 3D updates.
+  </section>
 
-<footer>© 2026 Retro Revive 3D</footer>
+  <footer>
+    <strong>Retro Revive 3D</strong>
+    Designed and 3D printed in Wisconsin 🇺🇸<br>
+    Thank you for supporting small business!
+  </footer>
 </main>
 </body>
 </html>
