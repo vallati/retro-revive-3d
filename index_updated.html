@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Retro Revive 3D</title>
+  <meta name="description" content="Custom displays, mounts, collectibles and more from Retro Revive 3D.">
+  <meta name="theme-color" content="#030318">
+
+  <style>
+    :root {
+      --cyan: #1cecff;
+      --pink: #ff31c6;
+      --orange: #ff741d;
+      --white: #ffffff;
+      --muted: #d3ddf4;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-height: 100%;
+      background: #030318;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--white);
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        linear-gradient(rgba(2, 3, 20, .16), rgba(2, 3, 20, .28)),
+        url("rr3d-grid-background.png") center center / cover fixed no-repeat;
+      overflow-x: hidden;
+    }
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      padding: 22px 20px 30px;
+      text-align: center;
+    }
+
+    .logo {
+      display: block;
+      width: min(100%, 330px);
+      height: auto;
+      margin: 0 auto 14px;
+      filter:
+        drop-shadow(0 0 8px rgba(28, 236, 255, .42))
+        drop-shadow(0 0 14px rgba(255, 49, 198, .22));
+    }
+
+    .tagline {
+      margin: 0 auto 20px;
+      font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+      font-size: clamp(20px, 3.5vw, 29px);
+      line-height: 1.12;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      color: #fff;
+      text-shadow: 0 2px 5px rgba(0,0,0,.9);
+    }
+
+    .links {
+      width: min(100%, 650px);
+      margin: 0 auto;
+      display: grid;
+      gap: 15px;
+    }
+
+    .card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 96px minmax(0, 1fr) 42px;
+      align-items: center;
+      min-height: 96px;
+      padding: 13px 16px;
+      overflow: hidden;
+      border: 3px solid currentColor;
+      border-radius: 20px;
+      color: var(--cyan);
+      text-decoration: none;
+      background:
+        linear-gradient(rgba(4, 6, 31, .93), rgba(4, 6, 31, .93));
+      box-shadow:
+        0 0 10px currentColor,
+        0 12px 26px rgba(0,0,0,.34);
+      transition: transform .18s ease, filter .18s ease;
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: -60% -45%;
+      background: linear-gradient(
+        115deg,
+        transparent 42%,
+        rgba(255,255,255,.13) 50%,
+        transparent 58%
+      );
+      transform: translateX(-55%);
+      animation: shine 5s ease-in-out infinite;
+    }
+
+    @keyframes shine {
+      0%, 58% { transform: translateX(-55%); }
+      86%, 100% { transform: translateX(55%); }
+    }
+
+    .card:hover,
+    .card:focus-visible {
+      transform: translateY(-2px) scale(1.005);
+      filter: brightness(1.08);
+      outline: none;
+    }
+
+    .facebook { color: var(--cyan); }
+    .ebay { color: var(--pink); }
+    .etsy { color: var(--orange); }
+
+    .brand {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      place-items: center;
+      width: 76px;
+      min-height: 58px;
+      justify-self: center;
+    }
+
+    .facebook-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 46px;
+      font-weight: 800;
+      line-height: 1;
+      background: linear-gradient(145deg, #2d9cff, #1464ed);
+      box-shadow: 0 0 13px rgba(28,236,255,.55);
+    }
+
+    
+    .instagram-icon {
+      width:56px;height:56px;border-radius:16px;display:grid;place-items:center;
+      color:#fff;font-size:30px;font-weight:700;
+      background:linear-gradient(145deg,#f58529,#dd2a7b,#8134af,#515bd4);
+      box-shadow:0 0 13px rgba(255,79,179,.55);
+    }
+
+    .ebay-logo {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      font-size: 34px;
+      font-weight: 700;
+      letter-spacing: -5px;
+      white-space: nowrap;
+    }
+
+    .ebay-logo .e { color: #e53238; }
+    .ebay-logo .b { color: #0064d2; }
+    .ebay-logo .a { color: #f5af02; }
+    .ebay-logo .y { color: #86b817; }
+
+    .etsy-logo {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 42px;
+      line-height: 1;
+      color: var(--orange);
+      white-space: nowrap;
+    }
+
+    .copy {
+      position: relative;
+      z-index: 1;
+      min-width: 0;
+      text-align: left;
+      padding: 0 12px;
+    }
+
+    .title {
+      display: block;
+      margin: 0;
+      color: #fff;
+      font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+      font-size: clamp(23px, 3.4vw, 31px);
+      line-height: 1.03;
+      letter-spacing: .7px;
+      text-transform: uppercase;
+      text-shadow: none;
+    }
+
+    .subtitle {
+      display: block;
+      margin-top: 7px;
+      color: currentColor;
+      font-size: clamp(14px, 2.1vw, 18px);
+      line-height: 1.25;
+      font-weight: 700;
+    }
+
+    .arrow {
+      position: relative;
+      z-index: 1;
+      justify-self: center;
+      color: currentColor;
+      font-size: 58px;
+      line-height: .8;
+      text-shadow: 0 0 10px currentColor;
+    }
+
+    footer {
+      width: min(100%, 680px);
+      margin: 22px auto 0;
+      padding: 14px 16px 0;
+      border-top: 1px solid rgba(28, 236, 255, .46);
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.5;
+      text-shadow: 0 2px 4px rgba(0,0,0,.9);
+    }
+
+    footer strong {
+      display: block;
+      color: #fff;
+      font-size: 18px;
+    }
+
+    @media (max-width: 620px) {
+      body {
+        background-position: center center;
+        background-attachment: scroll;
+      }
+
+      .page {
+        padding: 14px 11px 24px;
+      }
+
+      .logo {
+        width: min(100%, 255px);
+        margin-bottom: 12px;
+      }
+
+      .tagline {
+        margin-bottom: 15px;
+        font-size: clamp(18px, 5.3vw, 24px);
+      }
+
+      .links {
+        gap: 12px;
+      }
+
+      .card {
+        grid-template-columns: 64px minmax(0, 1fr) 24px;
+        min-height: 84px;
+        padding: 10px 8px;
+        border-width: 2px;
+        border-radius: 16px;
+      }
+
+      .brand {
+        width: 58px;
+        min-height: 50px;
+      }
+
+      .facebook-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 39px;
+      }
+
+      .ebay-logo {
+        font-size: 25px;
+        letter-spacing: -4px;
+      }
+
+      .etsy-logo {
+        font-size: 31px;
+      }
+
+      .copy {
+        padding: 0 7px;
+      }
+
+      .title {
+        font-size: clamp(18px, 5vw, 23px);
+      }
+
+      .subtitle {
+        margin-top: 4px;
+        font-size: clamp(12px, 3.1vw, 14px);
+      }
+
+      .arrow {
+        font-size: 42px;
+      }
+
+      footer {
+        margin-top: 18px;
+        font-size: 12px;
+      }
+
+      footer strong {
+        font-size: 15px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6B8G2VRHWQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-6B8G2VRHWQ');
+
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('utm_medium') === 'qr') {
+      gtag('event', 'qr_visit', {
+        qr_source: params.get('utm_source') || 'unknown',
+        qr_campaign: params.get('utm_campaign') || 'unknown'
+      });
+    }
+  </script>
+
+</head>
+
+<body>
+  <main class="page">
+    <img class="logo" src="rr3d-logo.png" alt="Retro Revive 3D">
+
+    <p class="tagline">
+      Custom Displays • Mounts • Collectibles<br>
+      &amp; More
+    </p>
+
+    <section class="links" aria-label="Retro Revive 3D links">
+      <a id="facebook-link" class="card facebook" href="https://www.facebook.com/RetroRevive3D" target="_blank" rel="noopener noreferrer">
+        <span class="brand"><span class="facebook-icon">f</span></span>
+        <span class="copy">
+          <span class="title">Follow on Facebook</span>
+          <span class="subtitle">Exclusive coupons, giveaways and early access to new products</span>
+        </span>
+        <span class="arrow">›</span>
+      </a>
+
+
+      <a id="instagram-link" class="card instagram" href="https://www.instagram.com/retrorevive3d/" target="_blank" rel="noopener noreferrer">
+        <span class="brand"><span class="instagram-icon">◎</span></span>
+        <span class="copy">
+          <span class="title">Follow on Instagram</span>
+          <span class="subtitle">Photos, reels and our newest creations</span>
+        </span>
+        <span class="arrow">›</span>
+      </a>
+
+      <a id="ebay-link" class="card ebay" href="https://www.ebay.com/str/retrorevive3dp" target="_blank" rel="noopener noreferrer">
+        <span class="brand ebay-logo" aria-label="eBay">
+          <span class="e">e</span><span class="b">b</span><span class="a">a</span><span class="y">y</span>
+        </span>
+        <span class="copy">
+          <span class="title">Shop Our eBay Store</span>
+          <span class="subtitle">Browse our latest listings</span>
+        </span>
+        <span class="arrow">›</span>
+      </a>
+
+      <a id="etsy-link" class="card etsy" href="https://retrorevive3dprints.etsy.com" target="_blank" rel="noopener noreferrer">
+        <span class="brand etsy-logo">Etsy</span>
+        <span class="copy">
+          <span class="title">Shop Our Etsy Store</span>
+          <span class="subtitle">Custom and 3D-printed products</span>
+        </span>
+        <span class="arrow">›</span>
+      </a>
+    </section>
+
+    <footer>
+      <strong>Retro Revive 3D</strong>
+      Designed and 3D printed in Wisconsin 🇺🇸<br>
+      Thank you for supporting small business!
+    </footer>
+  </main>
+
+  <script>
+    function trackStoreClick(eventName, destination) {
+      if (typeof gtag === 'function') {
+        gtag('event', eventName, {
+          link_url: destination,
+          transport_type: 'beacon'
+        });
+      }
+    }
+
+    document.getElementById('facebook-link').addEventListener('click', function () {
+      trackStoreClick('facebook_click', this.href);
+    });
+
+
+    document.getElementById('instagram-link').addEventListener('click', function () {
+      trackStoreClick('instagram_click', this.href);
+    });
+
+    document.getElementById('ebay-link').addEventListener('click', function () {
+      trackStoreClick('ebay_click', this.href);
+    });
+
+    document.getElementById('etsy-link').addEventListener('click', function () {
+      trackStoreClick('etsy_click', this.href);
+    });
+  </script>
+
+</body>
+</html>
