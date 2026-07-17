@@ -312,6 +312,24 @@
       }
     }
   </style>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6B8G2VRHWQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-6B8G2VRHWQ');
+
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('utm_medium') === 'qr') {
+      gtag('event', 'qr_visit', {
+        qr_source: params.get('utm_source') || 'unknown',
+        qr_campaign: params.get('utm_campaign') || 'unknown'
+      });
+    }
+  </script>
+
 </head>
 
 <body>
@@ -324,7 +342,7 @@
     </p>
 
     <section class="links" aria-label="Retro Revive 3D links">
-      <a class="card facebook" href="https://www.facebook.com/RetroRevive3D" target="_blank" rel="noopener noreferrer">
+      <a id="facebook-link" class="card facebook" href="https://www.facebook.com/RetroRevive3D" target="_blank" rel="noopener noreferrer">
         <span class="brand"><span class="facebook-icon">f</span></span>
         <span class="copy">
           <span class="title">Follow on Facebook</span>
@@ -333,7 +351,7 @@
         <span class="arrow">›</span>
       </a>
 
-      <a class="card ebay" href="https://www.ebay.com/str/retrorevive3dp" target="_blank" rel="noopener noreferrer">
+      <a id="ebay-link" class="card ebay" href="https://www.ebay.com/str/retrorevive3dp" target="_blank" rel="noopener noreferrer">
         <span class="brand ebay-logo" aria-label="eBay">
           <span class="e">e</span><span class="b">b</span><span class="a">a</span><span class="y">y</span>
         </span>
@@ -344,7 +362,7 @@
         <span class="arrow">›</span>
       </a>
 
-      <a class="card etsy" href="https://retrorevive3dprints.etsy.com" target="_blank" rel="noopener noreferrer">
+      <a id="etsy-link" class="card etsy" href="https://retrorevive3dprints.etsy.com" target="_blank" rel="noopener noreferrer">
         <span class="brand etsy-logo">Etsy</span>
         <span class="copy">
           <span class="title">Shop Our Etsy Store</span>
@@ -360,5 +378,29 @@
       Thank you for supporting small business!
     </footer>
   </main>
+
+  <script>
+    function trackStoreClick(eventName, destination) {
+      if (typeof gtag === 'function') {
+        gtag('event', eventName, {
+          link_url: destination,
+          transport_type: 'beacon'
+        });
+      }
+    }
+
+    document.getElementById('facebook-link').addEventListener('click', function () {
+      trackStoreClick('facebook_click', this.href);
+    });
+
+    document.getElementById('ebay-link').addEventListener('click', function () {
+      trackStoreClick('ebay_click', this.href);
+    });
+
+    document.getElementById('etsy-link').addEventListener('click', function () {
+      trackStoreClick('etsy_click', this.href);
+    });
+  </script>
+
 </body>
 </html>
