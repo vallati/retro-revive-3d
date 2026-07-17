@@ -74,10 +74,10 @@
     .card {
       position: relative;
       display: grid;
-      grid-template-columns: 112px minmax(0, 1fr) 42px;
+      grid-template-columns: 120px minmax(0, 1fr) 46px;
       align-items: center;
-      min-height: 96px;
-      padding: 13px 16px;
+      min-height: 112px;
+      padding: 14px 18px;
       overflow: hidden;
       border: 3px solid currentColor;
       border-radius: 20px;
@@ -126,18 +126,25 @@
       z-index: 1;
       display: grid;
       place-items: center;
-      width: 92px;
-      min-height: 74px;
+      width: 106px;
+      min-height: 88px;
       justify-self: center;
     }
 
     .brand-icon {
       display: block;
-      width: 76px;
-      height: 76px;
+      width: 86px;
+      height: 86px;
       object-fit: contain;
-      border-radius: 15px;
-      filter: drop-shadow(0 0 10px rgba(255,255,255,.22));
+      border-radius: 20px;
+      filter: drop-shadow(0 0 13px rgba(255,255,255,.30));
+    }
+
+    .ebay .brand-icon {
+      width: 90px;
+      height: 90px;
+      transform: translateY(3px);
+      transform-origin: center;
     }
 
     .copy {
@@ -145,7 +152,7 @@
       z-index: 1;
       min-width: 0;
       text-align: left;
-      padding: 0 12px;
+      padding: 0 10px;
     }
 
     .title {
@@ -220,8 +227,8 @@
       }
 
       .card {
-        grid-template-columns: 64px minmax(0, 1fr) 24px;
-        min-height: 84px;
+        grid-template-columns: 76px minmax(0, 1fr) 26px;
+        min-height: 92px;
         padding: 10px 8px;
         border-width: 2px;
         border-radius: 16px;
@@ -235,7 +242,7 @@
       .brand-icon {
         width: 50px;
         height: 50px;
-        border-radius: 12px;
+        border-radius: 15px;
       }
 
       .copy {
