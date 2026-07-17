@@ -131,49 +131,13 @@
       justify-self: center;
     }
 
-    .facebook-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      color: #fff;
-      font-size: 46px;
-      font-weight: 800;
-      line-height: 1;
-      background: linear-gradient(145deg, #2d9cff, #1464ed);
-      box-shadow: 0 0 13px rgba(28,236,255,.55);
-    }
-
-    
-    .instagram-icon {
-      width:56px;height:56px;border-radius:16px;display:grid;place-items:center;
-      color:#fff;font-size:30px;font-weight:700;
-      background:linear-gradient(145deg,#f58529,#dd2a7b,#8134af,#515bd4);
-      box-shadow:0 0 13px rgba(255,79,179,.55);
-    }
-
-    .ebay-logo {
-      display: flex;
-      align-items: baseline;
-      justify-content: center;
-      font-size: 34px;
-      font-weight: 700;
-      letter-spacing: -5px;
-      white-space: nowrap;
-    }
-
-    .ebay-logo .e { color: #e53238; }
-    .ebay-logo .b { color: #0064d2; }
-    .ebay-logo .a { color: #f5af02; }
-    .ebay-logo .y { color: #86b817; }
-
-    .etsy-logo {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 42px;
-      line-height: 1;
-      color: var(--orange);
-      white-space: nowrap;
+    .brand-icon {
+      display: block;
+      width: 62px;
+      height: 62px;
+      object-fit: contain;
+      border-radius: 15px;
+      filter: drop-shadow(0 0 10px rgba(255,255,255,.22));
     }
 
     .copy {
@@ -268,19 +232,10 @@
         min-height: 50px;
       }
 
-      .facebook-icon {
-        width: 48px;
-        height: 48px;
-        font-size: 39px;
-      }
-
-      .ebay-logo {
-        font-size: 25px;
-        letter-spacing: -4px;
-      }
-
-      .etsy-logo {
-        font-size: 31px;
+      .brand-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
       }
 
       .copy {
@@ -350,7 +305,7 @@
 
     <section class="links" aria-label="Retro Revive 3D links">
       <a id="facebook-link" class="card facebook" href="https://www.facebook.com/RetroRevive3D" target="_blank" rel="noopener noreferrer">
-        <span class="brand"><span class="facebook-icon">f</span></span>
+        <span class="brand"><img class="brand-icon" src="facebook-icon.svg" alt="Facebook"></span>
         <span class="copy">
           <span class="title">Follow on Facebook</span>
           <span class="subtitle">Exclusive coupons, giveaways and early access to new products</span>
@@ -360,7 +315,7 @@
 
 
       <a id="instagram-link" class="card instagram" href="https://www.instagram.com/retrorevive3d/" target="_blank" rel="noopener noreferrer">
-        <span class="brand"><span class="instagram-icon">◎</span></span>
+        <span class="brand"><img class="brand-icon" src="instagram-icon.svg" alt="Instagram"></span>
         <span class="copy">
           <span class="title">Follow on Instagram</span>
           <span class="subtitle">Photos, reels and our newest creations</span>
@@ -369,9 +324,7 @@
       </a>
 
       <a id="ebay-link" class="card ebay" href="https://www.ebay.com/str/retrorevive3dp" target="_blank" rel="noopener noreferrer">
-        <span class="brand ebay-logo" aria-label="eBay">
-          <span class="e">e</span><span class="b">b</span><span class="a">a</span><span class="y">y</span>
-        </span>
+        <span class="brand"><img class="brand-icon" src="ebay-icon.svg" alt="eBay"></span>
         <span class="copy">
           <span class="title">Shop Our eBay Store</span>
           <span class="subtitle">Browse our latest listings</span>
@@ -380,7 +333,7 @@
       </a>
 
       <a id="etsy-link" class="card etsy" href="https://retrorevive3dprints.etsy.com" target="_blank" rel="noopener noreferrer">
-        <span class="brand etsy-logo">Etsy</span>
+        <span class="brand"><img class="brand-icon" src="etsy-icon.svg" alt="Etsy"></span>
         <span class="copy">
           <span class="title">Shop Our Etsy Store</span>
           <span class="subtitle">Custom and 3D-printed products</span>
